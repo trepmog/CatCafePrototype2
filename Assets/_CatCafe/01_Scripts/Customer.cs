@@ -23,7 +23,7 @@ public class Customer : MonoBehaviour, IInteractable
         agent.isStopped = true;
         Debug.Log("Player interacted with Customer");
         // Trigger showing convo event
-        OnInteract("Customer Interaction occurred");
+        OnInteract("Customer1");
     }
 
     public void Resume()

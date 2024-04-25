@@ -1,0 +1,50 @@
+{
+    "cats": [
+      {
+        "id": "Cat1",
+        "name": "Phantom",
+        "gender": "Male",
+        "bodyType": "Sleek",
+        "fur": "Grey",
+        "breed": "Russian Blue",
+        "character": "Contemplative"
+      },
+      {
+        "id": "Cat2",
+        "name": "Lotus",
+        "gender": "Female",
+        "bodyType": "Athletic",
+        "fur": "White",
+        "breed": "Siamese",
+        "character": "Energetic"
+      },
+      {
+        "id": "Cat3",
+        "name": "Bass",
+        "gender": "Male",
+        "bodyType": "Large",
+        "fur": "Fluffy",
+        "breed": "Maine Coon",
+        "character": "Chill"
+      },
+      {
+        "id": "Cat4",
+        "name": "Page",
+        "gender": "Female",
+        "bodyType": "Small",
+        "fur": "Short",
+        "breed": "British Shorthair",
+        "character": "Wise"
+      },
+      {
+        "id": "Cat5",
+        "name": "Gorden",
+        "gender": "Male",
+        "bodyType": "Robust",
+        "fur": "Patterned",
+        "breed": "Bengal",
+        "character": "Adventurous"
+      }
+
+    ]
+  }

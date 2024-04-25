@@ -17,6 +17,7 @@ TagManager:
   - Door
   - Chair
   - FrontDoor
+  - Persistent
   layers:
   - Default
   - TransparentFX

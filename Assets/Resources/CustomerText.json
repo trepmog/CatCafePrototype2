@@ -1,0 +1,35 @@
+{
+    "customers": [
+      {
+        "id": "Customer1",
+        "name": "Marcus",
+        "occupation": "Writer",
+        "demands": "I spend most of my days writing by the window, so I'm looking for a contemplative male cat, one with a sleek body and grey fur, who can be both my muse and silent partner."
+      },
+      {
+        "id": "Customer2",
+        "name": "Julia",
+        "occupation": "Yoga Instructor",
+        "demands": "My yoga studio is a place of zen, and I need an energetic, sociable female cat with soft white fur to share the positive vibes with my clients."
+      },
+      {
+        "id": "Customer3",
+        "name": "Theo",
+        "occupation": "Music Producer",
+        "demands": "In the studio, it's all about the vibe. I want a chill, fluffy male cat, preferably large, to vibe with the beats. A Maine Coon would be perfect!"
+      },
+      {
+        "id": "Customer4",
+        "name": "Angela",
+        "occupation": "Librarian",
+        "demands": "The library is my realm of quiet knowledge. I seek a wise-looking, small female cat with short fur, a cat that seems as knowledgeable as the books around her."
+      },
+      {
+        "id": "Customer5",
+        "name": "Darren",
+        "occupation": "Chef",
+        "demands": "I'm looking for a robust, adventurous male cat with a patterned coat to roam around my home kitchen, a true gourmand feline companion."
+      }
+
+    ]
+  }

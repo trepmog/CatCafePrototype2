@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PersistentObjectSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject persistentObjectPrefab = null;
+    [SerializeField]
+    GameObject persistentObjectPrefab = null;
 
     // PRIVATE STATE
     static bool hasSpawned = false;
+
     private void Awake()
     {
-        if (hasSpawned) return;
+        if (hasSpawned)
+            return;
 
-        SpawnPersistentObjects();
-
-        hasSpawned = true;
+        if (!hasSpawned && GameObject.FindWithTag("Persistent") == null)
+        {
+            SpawnPersistentObjects();
+            hasSpawned = true;
+        }
     }
 
     private void SpawnPersistentObjects()
@@ -22,5 +27,4 @@ public class PersistentObjectSpawner : MonoBehaviour
         GameObject persistentObject = Instantiate(persistentObjectPrefab);
         DontDestroyOnLoad(persistentObject);
     }
-
 }

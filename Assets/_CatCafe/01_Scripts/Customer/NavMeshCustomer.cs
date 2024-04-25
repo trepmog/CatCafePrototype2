@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+// Script for handling the Customer's AI behavior
+
 public class NavMeshCustomer : MonoBehaviour
 {
     protected enum CustomerState
@@ -14,7 +16,6 @@ public class NavMeshCustomer : MonoBehaviour
     [SerializeField]
     protected Transform target;
 
-    // private Transform target;
     protected NavMeshAgent agent;
     protected CustomerState state;
     private float timer;
@@ -36,16 +37,6 @@ public class NavMeshCustomer : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        // if (agent.remainingDistance >= 5f)
-        // {
-        //     state = CustomerState.WALK;
-        //     // Debug.Log("Customer has stopped");
-        // }
-        // else if(agent.remainingDistance < 5f && state == CustomerState.WALK)
-        // {
-        //     agent.isStopped = true;
-        //     state = CustomerState.IDLE;
-        // }
 
         timer -= Time.deltaTime;
 
@@ -55,14 +46,13 @@ public class NavMeshCustomer : MonoBehaviour
             && agent.remainingDistance <= agent.stoppingDistance
         )
         {
-            WanderRandomly();
+            //WanderRandomly();
             timer = Random.Range(minWaitTime, maxWaitTime);
         }
     }
 
     void WanderRandomly()
     {
-        Debug.Log("Customer is wandering!");
         Vector3 randomDirection = Random.insideUnitSphere * radius;
         randomDirection += transform.position;
         randomDirection.y = transform.position.y; // Shift random point to the agent's current position
@@ -71,7 +61,6 @@ public class NavMeshCustomer : MonoBehaviour
         if (NavMesh.SamplePosition(randomDirection, out hit, radius * 2, NavMesh.AllAreas))
         {
             Vector3 finalPosition = hit.position;
-            Debug.Log($"Setting new position: {finalPosition}");
             agent.SetDestination(finalPosition);
             state = CustomerState.WALK; // Update state to WALK
         }
@@ -80,4 +69,5 @@ public class NavMeshCustomer : MonoBehaviour
             Debug.Log("Failed to find valid position");
         }
     }
+
 }

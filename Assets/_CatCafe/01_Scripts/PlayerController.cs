@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    // Add in player's movement speed
-    // [SerializeField] private Rigidbody rb;
     [SerializeField] private CharacterController _controller;
     [SerializeField] private PlayerInputManager _playerInputManager;
     [SerializeField] private float _speed = 5.0f;
@@ -85,7 +83,6 @@ public class PlayerController : MonoBehaviour
         {
             item.transform.parent = null; // removes the parent of the object so that it doesn't move with the hands
             item.transform.position = new Vector3(item.transform.position.x, originalPosition, item.transform.position.z); // sets the position of the object to the original position
-            // item.GetComponent<Rigidbody>().isKinematic = false; // this makes a cute little dropping "animation" if the item is dropped
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, playerPositionY, gameObject.transform.position.z); // this forces the player to stick on the ground
             gameObject.tag = "Player";
 
@@ -93,7 +90,7 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Item dropped");
         }
         else{
-            Debug.Log("No item to pick up");
+            Debug.Log("No object to interact with");
         }
     }
 

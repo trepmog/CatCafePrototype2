@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour
 
     public GameObject spawnNewObject()
     {
+        
         return Instantiate(gamePrefab, spawnPoint.transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
     }
     

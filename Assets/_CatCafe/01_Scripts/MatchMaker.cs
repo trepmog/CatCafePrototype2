@@ -74,6 +74,6 @@ public class MatchMaker : MonoBehaviour
         // matchCount % customerTraits.length will yield a value, then compare that to a set of reward tables
         if(matchCount > 0) matchResult = true;
         Debug.Log("Matching was " + matchResult);
-        //OnMatchResult(matchResult);
+        OnMatchResult(matchResult);
     }
 }

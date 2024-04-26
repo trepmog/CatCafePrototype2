@@ -4,7 +4,7 @@
         "id": "Customer1",
         "name": "Marcus",
         "occupation": "Writer",
-        "desiredTraits": ["calm", "curious"],
+        "desiredTraits": ["Calm", "Curious"],
         "conversationTexts": [
           {
             "speaker": "Lucy",
@@ -48,7 +48,7 @@
         "id": "Customer2",
         "name": "Julia",
         "occupation": "Yoga Instructor",
-        "desiredTraits": ["adventurous", "playful"],
+        "desiredTraits": ["Adventurous", "Playful"],
         "conversationTexts": [
           {
             "speaker": "Julia",
@@ -76,18 +76,21 @@
         "id": "Customer3",
         "name": "Theo",
         "occupation": "Music Producer",
+        "desiredTraits": ["Adventurous", "Playful"],
         "conversationTexts": []
       },
       {
         "id": "Customer4",
         "name": "Angela",
         "occupation": "Librarian",
+        "desiredTraits": ["Adventurous", "Playful"],
         "conversationTexts": []
       },
       {
         "id": "Customer5",
         "name": "Darren",
         "occupation": "Chef",
+        "desiredTraits": ["Adventurous", "Playful"],
         "conversationTexts": []
       }
 

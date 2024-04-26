@@ -13,6 +13,7 @@ public class CatManager : MonoBehaviour
 
     void LoadCatData()
     {
+        // Load cat profile data
         TextAsset jsonData = Resources.Load<TextAsset>("CatProfile");
         catDatabase = JsonUtility.FromJson<CatDatabase>(jsonData.text);
         Debug.Log("Cat data loaded");

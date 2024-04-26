@@ -503,7 +503,7 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  catManager: {fileID: 0}
+  dataManager: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!114 &307358004
 MonoBehaviour:
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  catManager: {fileID: 0}
+  dataManager: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!114 &1103868339
 MonoBehaviour:
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  catManager: {fileID: 0}
+  dataManager: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!114 &1150547501
 MonoBehaviour:
@@ -2028,13 +2028,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5864521737830258531, guid: 705b7937ec5244bd09c5f7ec3ac1ab60, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7235409666994280796, guid: 705b7937ec5244bd09c5f7ec3ac1ab60, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2076713402}
+    - targetCorrespondingSourceObject: {fileID: 7235409666994280796, guid: 705b7937ec5244bd09c5f7ec3ac1ab60, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2076713406}
   m_SourcePrefab: {fileID: 100100000, guid: 705b7937ec5244bd09c5f7ec3ac1ab60, type: 3}
 --- !u!1 &1590766967
 GameObject:
@@ -2319,6 +2323,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ae8dba81674886bcc0403a17b7279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2076713406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076713401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2f658d14cc84f0cb59350f3bc45dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catDatabase:
+    cats: []
+  customerDatabase:
+    customers: []
 --- !u!1 &2108903891
 GameObject:
   m_ObjectHideFlags: 0

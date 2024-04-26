@@ -6,6 +6,7 @@ public class CustomerEntry
     public string id;
     public string name;
     public string occupation;
+    public string[] desiredTraits;
     public ConversationText[] conversationTexts;
 }
 

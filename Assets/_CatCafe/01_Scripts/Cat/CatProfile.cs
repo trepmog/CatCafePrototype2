@@ -11,14 +11,13 @@ public class CatProfile : MonoBehaviour
     public string fur;
     public string breed;
     public string[] traits;
-    public CatManager catManager;
+    public DataLoader dataManager;
     public GameManager gameManager;
     public event Action OnLoaded;
 
     void Start()
     {
-        
-        catManager = GameManager.Instance.GetComponent<CatManager>();
+        dataManager = GameManager.Instance.GetComponent<DataLoader>();
         LoadCatData();
     }
 
@@ -28,7 +27,7 @@ public class CatProfile : MonoBehaviour
         // Temporary variable because there are only 3 cats. Ordinarily you would get a list of all cats available
         int limit = 3;
         // Load cat data from CatManager which is persistent
-        Cat[] cats = catManager.catDatabase.cats;
+        Cat[] cats = dataManager.catDatabase.cats;
 
         // Extract the number part from the GameObject's name, e.g., "Cat1" -> "1"
         string catId = gameObject.name.Substring(3); // Assuming name is formatted as "Cat1", "Cat2", etc.
@@ -48,6 +47,7 @@ public class CatProfile : MonoBehaviour
                 break;
             }
         }
+        // Calls an event saying the data has been loaded
         OnLoaded();
     }
 

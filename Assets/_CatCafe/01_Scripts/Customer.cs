@@ -8,13 +8,26 @@ public class Customer : MonoBehaviour, IInteractable
 {
     private bool playerLeft = false;
     private bool hasCat = false;
-    private NavMeshAgent agent; 
+    private NavMeshAgent agent;
+    public TraitGenie traitGenie; 
+    private CustomerIcons customerIcons;
+    private bool keyHeld = false;
     public event Action<string> OnInteract;
 
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        customerIcons = GetComponent<CustomerIcons>();
+        GameObject traitGenieObj = GameObject.FindWithTag("TraitGenie");
+        traitGenie = traitGenieObj.GetComponent<TraitGenie>();
+        traitGenie.OnHold += FindKeyHolding;
+    }
+
+    void Update()
+    {
+        // Shows traits if true, hides if false
+        ToggleShowTraits(keyHeld);
     }
 
     public void Interact(GameObject interactor)
@@ -48,5 +61,16 @@ public class Customer : MonoBehaviour, IInteractable
             playerLeft = true;
             Debug.Log("Player left the customer");
         }
+    }
+
+    private void FindKeyHolding(bool isHeld)
+    {
+        // Sets local boolean to event given boolean
+        keyHeld = isHeld;
+    }
+
+    public void ToggleShowTraits(bool toggle)
+    {
+        customerIcons.ToggleShowIcons(toggle);
     }
 }

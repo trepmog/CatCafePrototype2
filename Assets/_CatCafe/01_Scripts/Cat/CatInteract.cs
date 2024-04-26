@@ -13,6 +13,7 @@ public class CatInteract : MonoBehaviour, IInteractable
     public TraitGenie traitGenie;
     public GameObject catTreeObj;
     public CatTreeInteract catTree;
+    public bool isOnTree = false;
     private bool keyHeld;
     private bool isNearTree = false;
 
@@ -91,6 +92,16 @@ public class CatInteract : MonoBehaviour, IInteractable
         this.transform.SetParent(player.transform);
 
         isCarried = true;
+        // If this cat is on the cat tree,
+        // Set cat state to not on tree + set cat tree state to not occupied
+        if(isOnTree) 
+        {
+            catTree.SetIsOccupied(false);
+            catTree.residingCat = null;
+            isOnTree = false;
+        }
+        
+
     }
 
     private void PutDown(GameObject player)
@@ -107,10 +118,12 @@ public class CatInteract : MonoBehaviour, IInteractable
                 player.transform.position.z - 1.5f
             );
             isCarried = false;
+            
         }
         else
         {
             PlaceOnTree(player);
+            isCarried = false;
         }
     }
 
@@ -128,6 +141,9 @@ public class CatInteract : MonoBehaviour, IInteractable
 
             this.transform.position = new Vector3(treePos.x, treePos.y + 2.0f, treePos.z + 2.5f);
             isCarried = false;
+            isOnTree = true;
+            catTree.SetIsOccupied(true);
+            catTree.residingCat = this.gameObject;
         }
         else
         {

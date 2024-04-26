@@ -46,7 +46,6 @@ public class CustomerIcons : MonoBehaviour
         // Sets the canvas to appear above the object (customer) and rotate 45 deg for the camera
         traitCanvas.transform.localPosition = new Vector3(-0.7f, 2.6f, -1.16f);
         traitCanvas.transform.localEulerAngles = new Vector3(-45f, 0f, 0f);
-        Debug.Log("Running the canvas creation");
         // Assigns the individual icons to variables for later use
         trait1 = traitCanvas.transform.Find(traitText[0]).gameObject;  
         trait2 = traitCanvas.transform.Find(traitText[1]).gameObject;

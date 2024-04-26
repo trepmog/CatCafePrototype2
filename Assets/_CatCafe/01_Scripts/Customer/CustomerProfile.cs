@@ -43,8 +43,6 @@ public class CustomerProfile : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Customer data loaded!");
-        Debug.Log($"Subscribers count: {(OnLoaded != null ? OnLoaded.GetInvocationList().Length : 0)}");
         OnLoaded();
     }
 

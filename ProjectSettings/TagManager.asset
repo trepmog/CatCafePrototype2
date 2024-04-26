@@ -20,6 +20,7 @@ TagManager:
   - Persistent
   - ConvoButton
   - TraitGenie
+  - CatTree
   layers:
   - Default
   - TransparentFX

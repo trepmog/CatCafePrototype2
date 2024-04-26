@@ -17,6 +17,7 @@ public class TraitGenie : MonoBehaviour, IInteractable
 
     void Update()
     {
+        // If Interact was called, Update may check for key hold
         if (!interactionStarted)
             return;
 
@@ -26,6 +27,7 @@ public class TraitGenie : MonoBehaviour, IInteractable
         }
         else if (Input.GetKeyUp(KeyCode.E))
         {
+            // If the key is not being held, reset interaction status
             OnHold(false);
             interactionStarted = false;
         }
@@ -33,7 +35,7 @@ public class TraitGenie : MonoBehaviour, IInteractable
 
     public void Interact(GameObject interactor)
     {
-        //OnHold();
+        // Set a flag to allow Update to check for Key press
         interactionStarted = true;
     }
 }

@@ -306,9 +306,12 @@ GameObject:
   - component: {fileID: 302038028}
   - component: {fileID: 302038027}
   - component: {fileID: 302038026}
+  - component: {fileID: 302038029}
+  - component: {fileID: 302038030}
+  - component: {fileID: 302038031}
   m_Layer: 0
   m_Name: CatTree
-  m_TagString: Untagged
+  m_TagString: CatTree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -400,6 +403,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302038024}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &302038029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302038024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df92a410be85d4a81b23e6f22102532f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &302038030
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302038024}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.0000001
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &302038031
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302038024}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &307357993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8747007411177341143, guid: 354cf57ca0d413046bf729d81c5afc8a, type: 3}
@@ -418,6 +483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traitGenie: {fileID: 1590766968}
+  catTreeObj: {fileID: 302038024}
+  catTree: {fileID: 302038029}
 --- !u!114 &307358003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,6 +1038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traitGenie: {fileID: 1590766968}
+  catTreeObj: {fileID: 302038024}
+  catTree: {fileID: 302038029}
 --- !u!114 &1103868338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traitGenie: {fileID: 1590766968}
+  catTreeObj: {fileID: 302038024}
+  catTree: {fileID: 302038029}
 --- !u!136 &1150547499
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2664,14 +2735,14 @@ SceneRoots:
   - {fileID: 1214594715}
   - {fileID: 1510005301}
   - {fileID: 1437151284}
+  - {fileID: 1590766972}
+  - {fileID: 597683992}
+  - {fileID: 6181066114528011815}
+  - {fileID: 1178380660}
+  - {fileID: 2324779790776943773}
   - {fileID: 3012933014902150011}
   - {fileID: 1374403259}
   - {fileID: 1767306565}
   - {fileID: 2118658807}
-  - {fileID: 1178380660}
-  - {fileID: 1590766972}
-  - {fileID: 597683992}
-  - {fileID: 6181066114528011815}
-  - {fileID: 2324779790776943773}
   - {fileID: 1354035871}
   - {fileID: 349670453}

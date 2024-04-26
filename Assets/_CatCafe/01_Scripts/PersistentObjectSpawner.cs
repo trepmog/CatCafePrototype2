@@ -20,6 +20,7 @@ public class PersistentObjectSpawner : MonoBehaviour
             SpawnPersistentObjects();
             hasSpawned = true;
         }
+
     }
 
     private void SpawnPersistentObjects()

@@ -535,6 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6986734602934321190}
   - component: {fileID: 1337069389914179546}
+  - component: {fileID: 5864521737830258531}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Persistent
@@ -572,6 +573,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerPrefab: {fileID: 931184387521886117, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
   convoView: {fileID: 6647783748073134721}
+--- !u!114 &5864521737830258531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235409666994280796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474b8e6dd03fa004fa14822125406a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catDatabase:
+    cats: []
 --- !u!1 &8130595249380964676
 GameObject:
   m_ObjectHideFlags: 0

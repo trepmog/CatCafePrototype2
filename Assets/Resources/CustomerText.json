@@ -4,6 +4,7 @@
         "id": "Customer1",
         "name": "Marcus",
         "occupation": "Writer",
+        "desiredTraits": ["calm", "curious"],
         "conversationTexts": [
           {
             "speaker": "Lucy",
@@ -47,6 +48,7 @@
         "id": "Customer2",
         "name": "Julia",
         "occupation": "Yoga Instructor",
+        "desiredTraits": ["adventurous", "playful"],
         "conversationTexts": [
           {
             "speaker": "Julia",

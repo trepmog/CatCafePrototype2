@@ -21,8 +21,8 @@ public class Customer : MonoBehaviour, IInteractable
     {
         // Stop wandering
         agent.isStopped = true;
-        Debug.Log("Player interacted with Customer");
         // Trigger showing convo event
+        // First customer is hard coded, this will change when we cycle through customers and load data
         OnInteract("Customer1");
     }
 

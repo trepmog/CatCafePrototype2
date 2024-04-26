@@ -7,7 +7,7 @@
         "bodyType": "Sleek",
         "fur": "Grey",
         "breed": "Russian Blue",
-        "character": "Contemplative"
+        "character": ["calm", "curious"]
       },
       {
         "id": "Cat2",
@@ -16,7 +16,7 @@
         "bodyType": "Athletic",
         "fur": "White",
         "breed": "Siamese",
-        "character": "Energetic"
+        "character": ["adventurous", "playful"]
       },
       {
         "id": "Cat3",
@@ -25,7 +25,7 @@
         "bodyType": "Large",
         "fur": "Fluffy",
         "breed": "Maine Coon",
-        "character": "Chill"
+        "character": ["intelligence", "sassy"]
       },
       {
         "id": "Cat4",
@@ -34,7 +34,7 @@
         "bodyType": "Small",
         "fur": "Short",
         "breed": "British Shorthair",
-        "character": "Wise"
+        "character": [""]
       },
       {
         "id": "Cat5",
@@ -43,7 +43,7 @@
         "bodyType": "Robust",
         "fur": "Patterned",
         "breed": "Bengal",
-        "character": "Adventurous"
+        "character": [""]
       }
 
     ]

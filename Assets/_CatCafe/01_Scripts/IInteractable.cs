@@ -6,6 +6,6 @@ namespace Game.Interactions
 {
     public interface IInteractable
     {
-        void Interact();
+        void Interact(GameObject interactor);
     }
 }

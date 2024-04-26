@@ -18,6 +18,7 @@ TagManager:
   - Chair
   - FrontDoor
   - Persistent
+  - ConvoButton
   layers:
   - Default
   - TransparentFX

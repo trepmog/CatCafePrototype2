@@ -17,7 +17,7 @@ public class Customer : MonoBehaviour, IInteractable
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void Interact()
+    public void Interact(GameObject interactor)
     {
         // Stop wandering
         agent.isStopped = true;

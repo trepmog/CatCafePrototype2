@@ -10,7 +10,12 @@ public class ConvoView : MonoBehaviour
     public Customer customer;
     private GameObject convoBG;
     public TextMeshProUGUI conversationText;
+    public TextMeshProUGUI nameText;
     private CustomerDatabase customerDB;
+    private int currentTextIndex = 0;
+    private string customerId;
+    private bool isConvoActive = false;
+    private bool isFirstInteract = true;
 
     void Start()
     {
@@ -18,7 +23,16 @@ public class ConvoView : MonoBehaviour
         customer.OnInteract += ShowConvoUI;
         convoBG = transform.Find("ConvoBG").gameObject;
         convoBG.SetActive(false);
-        //conversationText = convoBG.transform.Find("TextObject").GetComponent<TextMeshProUGUI>();
+    }
+
+    void Update()
+    {
+        // Handle key press to cycle through the conversation
+        if (isConvoActive && Input.GetKeyDown(KeyCode.E))
+        {
+            //Debug.Log("Tried to show next piece of dialogue");
+            NextConvoText();
+        }
     }
 
     private void OnDisable()
@@ -26,20 +40,23 @@ public class ConvoView : MonoBehaviour
         customer.OnInteract -= ShowConvoUI;
     }
 
-    public void ShowConvoUI(string customerId)
+    public void ShowConvoUI(string givenId)
     {
-        Debug.Log("Attempted to show conversation");
-        // Get the demands text
-        string demands = DisplayCustomerDemands(customerId);
-        // Display conversation UI
-        convoBG.SetActive(true);
-        conversationText.text = demands;
+        customerId = givenId;
+        // Shows convo BG
+        SetActiveConvo(true);
+        DisplayCustomerDemands();
     }
 
-    public void HideConvoUI()
+    private void SetActiveConvo(bool isActive)
     {
-        // Hide the conversation UI
-        convoBG.SetActive(false);
+        isConvoActive = isActive;
+        convoBG.SetActive(isActive);
+        // Resets if setting convo to inactive
+        if (!isActive) {
+            currentTextIndex = 0;
+            isFirstInteract = true;
+        }
     }
 
     void LoadCustomerData()
@@ -48,17 +65,44 @@ public class ConvoView : MonoBehaviour
         customerDB = JsonUtility.FromJson<CustomerDatabase>(jsonData.text);
     }
 
-    public string DisplayCustomerDemands(string customerId)
+    public void DisplayCustomerDemands()
     {
         foreach (CustomerEntry customerEntry in customerDB.customers)
         {
             if (customerEntry.id == customerId)
             {
-                // Assign the retrieved text to the UI element
-                conversationText.text = customerEntry.demands; // Update text in the UI
-                return customerEntry.demands;
+                if (currentTextIndex < customerEntry.conversationTexts.Length)
+                {
+                    // Cycle to the next piece of dialogue
+                    var convoEntry = customerEntry.conversationTexts[currentTextIndex];
+                    nameText.text = convoEntry.speaker + ":";
+                    conversationText.text = convoEntry.text;
+                }
+                else
+                {
+                    SetActiveConvo(false); // End conversation if we run out of texts
+                }
             }
         }
-        return "No demands found for the given customer ID."; // Return a default message if no customer is found
+    }
+
+    public void NextConvoText()
+    {
+        if (isConvoActive)
+        {
+                // Displays the first piece of dialogue on first interaction
+            if (isFirstInteract) {
+                DisplayCustomerDemands();
+                isFirstInteract = false;
+            }
+            else
+            {
+                // Cycles to next piece of dialogue if not the first interaction
+                currentTextIndex++;
+                DisplayCustomerDemands();
+            }
+            
+            
+        }
     }
 }

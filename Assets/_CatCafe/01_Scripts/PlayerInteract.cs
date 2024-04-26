@@ -7,6 +7,14 @@ using System.Linq;
 public class PlayerInteract : MonoBehaviour
 {
     private GameObject currentInteractable = null;
+    public float interactionRadius = 2.0f;
+    private float lastInteractionTime = 0f;
+    private float interactionCooldown = 2f;
+
+    void Update()
+    {
+        FindNearestInteractable();
+    }
 
     public void Interact()
     {
@@ -17,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
             if (interactable != null)
             {
                 // Calls interact on that object
-                interactable.Interact();
+                interactable.Interact(this.gameObject);
             }
             else
             {
@@ -32,19 +40,43 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FindNearestInteractable()
     {
-        if (other.gameObject.GetComponent<IInteractable>() != null)
+        // Reset current interactable
+        currentInteractable = null;
+        float closestDistance = float.MaxValue;
+
+        // Find all interactable objects within interactionRadius
+        Collider[] hits = Physics.OverlapSphere(transform.position, interactionRadius);
+        foreach (Collider hit in hits)
         {
-            currentInteractable = other.gameObject;
+            if (hit.gameObject.GetComponent<IInteractable>() != null)
+            {
+                float distance = Vector3.Distance(hit.transform.position, transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    currentInteractable = hit.gameObject;
+                }
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == currentInteractable)
-        {
-            currentInteractable = null;
-        }
-    }
+
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.GetComponent<IInteractable>() != null)
+    //     {
+    //         currentInteractable = other.gameObject;
+    //     }
+    // }
+
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject == currentInteractable)
+    //     {
+    //         currentInteractable = null;
+    //     }
+    // }
 }

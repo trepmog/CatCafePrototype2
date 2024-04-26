@@ -6,7 +6,14 @@ public class CustomerEntry
     public string id;
     public string name;
     public string occupation;
-    public string demands;
+    public ConversationText[] conversationTexts;
+}
+
+[System.Serializable]
+public class ConversationText
+{
+    public string speaker;
+    public string text;
 }
 
 [System.Serializable]

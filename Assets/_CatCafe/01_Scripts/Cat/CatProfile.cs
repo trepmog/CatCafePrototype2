@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CatProfile : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class CatProfile : MonoBehaviour
     public string bodyType;
     public string fur;
     public string breed;
-    public string[] characteristics;
+    public string[] traits;
     public CatManager catManager;
     public GameManager gameManager;
+    public event Action OnLoaded;
 
     void Start()
     {
+        
         catManager = GameManager.Instance.GetComponent<CatManager>();
         LoadCatData();
     }
@@ -22,6 +25,8 @@ public class CatProfile : MonoBehaviour
 
     private void LoadCatData()
     {
+        // Temporary variable because there are only 3 cats. Ordinarily you would get a list of all cats available
+        int limit = 3;
         // Load cat data from CatManager which is persistent
         Cat[] cats = catManager.catDatabase.cats;
 
@@ -30,25 +35,26 @@ public class CatProfile : MonoBehaviour
 
         foreach (Cat cat in cats)
         {
-            if (cat.id == "Cat" + catId) // Match "Cat1", "Cat2", etc., with ids
+            if (cat.id == "Cat" + catId && limit > 0) // Match "Cat1", "Cat2", etc., with ids
             {
                 catName = cat.name;
                 gender = cat.gender;
                 bodyType = cat.bodyType;
                 fur = cat.fur;
                 breed = cat.breed;
-                characteristics = cat.character;
+                traits = cat.character;
 
-                // Test to see if data loaded properly
-                UpdateCatProfileDisplay();
-
+                limit--;
                 break;
             }
         }
+        OnLoaded();
     }
 
-    private void UpdateCatProfileDisplay()
+    public string[] GetTraits()
     {
-        Debug.Log($"Loaded {catName}'s profile: {breed}");
+        Debug.Log("Cat Profile says traits are: " + traits);
+        return traits;
     }
+
 }

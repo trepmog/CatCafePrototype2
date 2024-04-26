@@ -9,12 +9,28 @@ public class CatInteract : MonoBehaviour, IInteractable
     private bool isCarried = false;
     private float catY = 1.43f;
     private GameObject player;
+    private CatIcons catIcons;
+    public TraitGenie traitGenie;
+    private GameObject traitGenieObj;
+    private bool keyHeld;
 
     // Start is called before the first frame update
-    void Start() { }
+    void Start() {
+        catIcons = GetComponent<CatIcons>();
+        // Subscribe to Trait Genie's event
+        traitGenie.OnHold += FindKeyHolding;
+     }
 
-    // Update is called once per frame
-    void Update() { }
+    void Update() {
+        // Shows traits if true, hides if false
+        ToggleShowTraits(keyHeld);
+        
+    }
+
+    void OnDisable()
+    {
+        traitGenie.OnHold -= FindKeyHolding;
+    }
 
     public void Interact(GameObject interactor)
     {
@@ -29,6 +45,12 @@ public class CatInteract : MonoBehaviour, IInteractable
             // Pick up the cat
             PickUp(player);
         }
+    }
+
+    private void FindKeyHolding(bool isHeld)
+    {
+        // Sets local boolean to event given boolean
+        keyHeld = isHeld;
     }
 
     private void PickUp(GameObject player)
@@ -59,5 +81,11 @@ public class CatInteract : MonoBehaviour, IInteractable
             player.transform.position.z - 1.5f
         );
         isCarried = false;
+    }
+
+
+    public void ToggleShowTraits(bool toggle)
+    {
+        catIcons.ToggleShowIcons(toggle);
     }
 }

@@ -19,6 +19,7 @@ TagManager:
   - FrontDoor
   - Persistent
   - ConvoButton
+  - TraitGenie
   layers:
   - Default
   - TransparentFX

@@ -24,7 +24,6 @@ public class CatInteract : MonoBehaviour, IInteractable
         catTreeObj = GameObject.FindWithTag("CatTree");
         // Subscribe to Trait Genie's event
         traitGenie.OnHold += FindKeyHolding;
-        catTree.OnCatPlacement += PlaceOnTree;
     }
 
     void Update()
@@ -37,7 +36,6 @@ public class CatInteract : MonoBehaviour, IInteractable
     {
         // Unsubscribe to events if this object is ever disabled
         traitGenie.OnHold -= FindKeyHolding;
-        catTree.OnCatPlacement -= PlaceOnTree;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -144,6 +142,8 @@ public class CatInteract : MonoBehaviour, IInteractable
             isOnTree = true;
             catTree.SetIsOccupied(true);
             catTree.residingCat = this.gameObject;
+
+			MatchMaker.MakeMatch( this.gameObject );
         }
         else
         {

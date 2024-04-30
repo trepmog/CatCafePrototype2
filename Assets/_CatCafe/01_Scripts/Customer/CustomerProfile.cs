@@ -5,7 +5,7 @@ using System;
 
 public class CustomerProfile : MonoBehaviour
 {
-    public string name;
+    public string customerName;
     public string occupation;
     public string[] desiredTraits;
     public ConversationText[] conversationTexts;
@@ -34,7 +34,7 @@ public class CustomerProfile : MonoBehaviour
         {
             if (customer.id == "Customer" + limit.ToString() && limit < 2) 
             {
-                name = customer.name;
+                customerName = customer.name;
                 occupation = customer.occupation;
                 conversationTexts = customer.conversationTexts;
                 desiredTraits = customer.desiredTraits;

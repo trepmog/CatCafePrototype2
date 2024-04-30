@@ -4,14 +4,13 @@ using UnityEngine;
 using Game.Interactions;
 using System;
 
-public class CatTreeInteract : MonoBehaviour, IInteractable
+public class CatTreeInteract : MonoBehaviour
 {
     public bool isOccupied;
     public bool isCustomerNear = false;
     public GameObject residingCat;
     public float detectionRadius = 5.0f;  // Radius within which to detect customers
     public GameObject detectedCustomer = null;
-    public event Action<GameObject> OnCatPlacement;
 
 
     // Beware, this script does not yet contain a way to clear the current customer when customer leaves
@@ -47,11 +46,6 @@ public class CatTreeInteract : MonoBehaviour, IInteractable
     public GameObject GetDetectedCustomer()
     {
         return detectedCustomer;
-    }
-
-    public void Interact(GameObject interactor)
-    {
-        OnCatPlacement(interactor);
     }
 
     void DetectCustomer()

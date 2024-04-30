@@ -5,6 +5,8 @@ using System;
 
 public class MatchMaker : MonoBehaviour
 {
+	private static MatchMaker s_instance;
+
     private GameObject cat;
     private CatProfile catProfile;
     private GameObject customer;
@@ -12,25 +14,21 @@ public class MatchMaker : MonoBehaviour
     private CatTreeInteract catTreeInteract;
     private string[] customerTraits;
     private string[] catTraits;
-    private bool isMatchMade = false;
     public event Action<bool> OnMatchResult;
+
+	private void Awake()
+	{
+		s_instance = this;
+	}
 
     // Start is called before the first frame update
     void Start()
     {
         catTreeInteract = GetComponent<CatTreeInteract>();
-        catTreeInteract.OnCatPlacement += MakeMatch;
     }
 
     // Update is called once per frame
     void Update() { 
-        if(catTreeInteract.isOccupied) 
-        {
-            cat = catTreeInteract.residingCat;
-            catProfile = cat.GetComponent<CatProfile>();
-            catTraits = catProfile.traits;
-            //Debug.Log("Cat traits are: " + catTraits[0] + " and " + catTraits[1]);
-        }
         if(catTreeInteract.isCustomerNear) 
         {
             customer = catTreeInteract.detectedCustomer;
@@ -38,12 +36,6 @@ public class MatchMaker : MonoBehaviour
             customerTraits = customerProfile.desiredTraits;
             //Debug.Log("Customer traits are: " + customerTraits[0] + " and " + customerTraits[1]);
         }
-        if(catTreeInteract.isOccupied && catTreeInteract.isCustomerNear && !isMatchMade)
-        {
-            MakeMatch(customer);
-            isMatchMade = true;
-        }
-
     }
 
     void SetTraits()
@@ -52,8 +44,16 @@ public class MatchMaker : MonoBehaviour
         catTraits = catProfile.traits;
     }
 
-    void MakeMatch(GameObject interactor)
+    private void MakeMatchInternal( GameObject _cat )
     {
+		if ( cat != _cat )
+		{ 
+			cat = _cat;
+			catProfile = cat.GetComponent<CatProfile>();
+			catTraits = catProfile.traits;
+			//Debug.Log("Cat traits are: " + catTraits[0] + " and " + catTraits[1]);
+		}
+
         bool matchResult = false;
         int matchCount = 0;
         
@@ -76,4 +76,9 @@ public class MatchMaker : MonoBehaviour
         Debug.Log("Matching was " + matchResult);
         OnMatchResult(matchResult);
     }
+
+	public static void MakeMatch( GameObject _cat )
+	{
+		s_instance.MakeMatchInternal( _cat );
+	}
 }

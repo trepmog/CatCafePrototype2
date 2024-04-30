@@ -10,8 +10,10 @@ public class ConvoView : MonoBehaviour
     public Customer customer;
     private GameObject convoBG;
     private GameObject matchSuccess;
+    private GameObject matchFail;
     private GameObject reward;
     private GameObject thankYou;
+    private GameObject continueText;
     public TextMeshProUGUI conversationText;
     public TextMeshProUGUI nameText;
     private CustomerDatabase customerDB;
@@ -31,8 +33,10 @@ public class ConvoView : MonoBehaviour
         matchMaker.OnMatchResult += ShowMatchResult;
         convoBG = transform.Find("ConvoBG").gameObject;
         matchSuccess = transform.Find("MatchSuccess").gameObject;
+        matchFail = transform.Find("MatchFailText").gameObject;
         thankYou = transform.Find("ThankYou").gameObject;
         reward = transform.Find("Reward").gameObject;
+        continueText = transform.Find("ContinueText").gameObject;
         convoBG.SetActive(false);
     }
 
@@ -44,7 +48,7 @@ public class ConvoView : MonoBehaviour
             //Debug.Log("Tried to show next piece of dialogue");
             NextConvoText();
         }
-        if (matchSuccess.activeSelf && Input.GetKeyDown(KeyCode.E) && matchResultShown)
+        if ((matchSuccess.activeSelf || matchFail.activeSelf) && Input.GetKeyDown(KeyCode.E) && matchResultShown)
         {
             // Only hide the results if the Player has seen the results
             if (timer <= 0)
@@ -80,6 +84,7 @@ public class ConvoView : MonoBehaviour
         {
             matchSuccess.SetActive(true);
             thankYou.SetActive(true);
+            continueText.SetActive(true);
             // This is to prevent the Update from hiding the results right away
             timer = delayBeforeHide;
             matchResultShown = true;
@@ -87,6 +92,11 @@ public class ConvoView : MonoBehaviour
         else
         {
             Debug.Log("It thinks it's a fail");
+            matchFail.SetActive(true);
+            continueText.SetActive(true);
+            // This is to prevent the Update from hiding the results right away
+            timer = delayBeforeHide;
+            matchResultShown = true;
         }
     }
 
@@ -94,6 +104,8 @@ public class ConvoView : MonoBehaviour
     {
         matchSuccess.SetActive(false);
         thankYou.SetActive(false);
+        matchFail.SetActive(false);
+        continueText.SetActive(false);
     }
 
     private void SetActiveConvo(bool isActive)

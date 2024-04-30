@@ -14,7 +14,7 @@ public class CatIcons : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         GameObject camCam = GameObject.FindWithTag("MainCamera");
         mainCam = camCam.GetComponent<Camera>();
@@ -24,11 +24,6 @@ public class CatIcons : MonoBehaviour
         // Don't get the traits until the CatProfile has loaded them by subscribing to the Cat Profile event
         catProfile.OnLoaded += SetupTraitIcons;
         
-    }
-
-    void Awake()
-    {
-
     }
 
     // Update is called once per frame

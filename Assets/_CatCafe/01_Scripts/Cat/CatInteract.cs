@@ -78,16 +78,9 @@ public class CatInteract : MonoBehaviour, IInteractable
     private void PickUp(GameObject player)
     {
         Debug.Log("Cat picked up!");
-        // Creates a position that is "vertically" higher than it currently is (actually an X value since the game is 2.5D)
-        var playerHand = new Vector3(
-            gameObject.transform.position.x + 0.5f,
-            gameObject.transform.position.y + 1f,
-            gameObject.transform.position.z - 1.5f
-        );
-        // Moves the cat to the vertically higher position
-        this.transform.position = playerHand;
-        // Make the cat move with the player;
+
         this.transform.SetParent(player.transform);
+		this.transform.localPosition = new Vector3( 0, 0, -0.5f );
 
         isCarried = true;
         // If this cat is on the cat tree,

@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 6779021343683470298}
   - component: {fileID: 6276239872085655783}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderWash
   m_TagString: PlayArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 1352656779124220592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.71, y: 0, z: -3.83}
+  m_LocalPosition: {x: -6.89, y: 0, z: -3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -269,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 2165417237832146107}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.71, y: 0, z: 1.46}
+  m_LocalPosition: {x: -6.89, y: 0, z: 4.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -334,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 3732090884059273451}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9500003, y: 0, z: 1.2600002}
+  m_LocalPosition: {x: 2.9500003, y: 0, z: 4.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 4701937867112094911}
   - component: {fileID: 797638855668619804}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderLitterbox
   m_TagString: PlayArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 7551727822308762980}
   - component: {fileID: 1104316518077744403}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderBed
   m_TagString: PlayArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 6835154639829552398}
   - component: {fileID: 8702955289586460199}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: ColliderFood
   m_TagString: PlayArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

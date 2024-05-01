@@ -16,9 +16,10 @@ public class CatInteract : MonoBehaviour, IInteractable
     public bool isOnTree = false;
     private bool keyHeld;
     private bool isNearTree = false;
+	private GameObject nearPlayArea = null;
 
 
-    void Start()
+	void Start()
     {
         catIcons = GetComponent<CatIcons>();
         catTreeObj = GameObject.FindWithTag("CatTree");
@@ -44,6 +45,11 @@ public class CatInteract : MonoBehaviour, IInteractable
         {
             isNearTree = true;
         }
+		else if ( other.CompareTag("PlayArea"))
+		{
+			//Debug.Log("Entered Play Area " + other.gameObject.name );
+			nearPlayArea = other.gameObject;
+		}
     }
 
     private void OnTriggerExit(Collider other)
@@ -52,7 +58,12 @@ public class CatInteract : MonoBehaviour, IInteractable
         {
             isNearTree = false;
         }
-    }
+		else if ( other.CompareTag( "PlayArea" ) )
+		{
+			//Debug.Log( "Exited Play Area " + other.gameObject.name );
+			nearPlayArea = null;
+		}
+	}
 
     public void Interact(GameObject interactor)
     {
@@ -91,32 +102,35 @@ public class CatInteract : MonoBehaviour, IInteractable
             catTree.residingCat = null;
             isOnTree = false;
         }
-        
-
     }
 
     private void PutDown(GameObject player)
     {
-        // Checks if Player is trying to put the cat on the Cat Tree first
-        if (!isNearTree)
-        {
-            Debug.Log("Cat put down!");
-            this.transform.SetParent(null); // Remove the cat from being a child of player
-            // creates a position that is offset from the player to appear over the hand and assigns it to the cat
-            this.transform.position = new Vector3(
-                player.transform.position.x + 0.5f,
-                catY,
-                player.transform.position.z - 1.5f
-            );
-            isCarried = false;
-            
-        }
-        else
-        {
-            PlaceOnTree(player);
-            isCarried = false;
-        }
-    }
+		// Checks if Player is trying to put the cat on the Cat Tree first
+		if ( isNearTree )
+		{
+			PlaceOnTree( player );
+			isCarried = false;
+		}
+		else if ( nearPlayArea )
+		{
+			PlaceOnPlayArea( player );
+			isCarried = false;
+		}
+		else
+		{
+			Debug.Log( "Cat put down!" );
+			this.transform.SetParent( null ); // Remove the cat from being a child of player
+											  // creates a position that is offset from the player to appear over the hand and assigns it to the cat
+			this.transform.position = new Vector3(
+				player.transform.position.x + 0.5f,
+				catY,
+				player.transform.position.z - 1.5f
+			);
+			isCarried = false;
+
+		}
+	}
 
     public void ToggleShowTraits(bool toggle)
     {
@@ -143,4 +157,20 @@ public class CatInteract : MonoBehaviour, IInteractable
             Debug.Log("Cannot place on tree, cat is not being carried");
         }
     }
+	
+	public void PlaceOnPlayArea( GameObject player )
+	{
+		if ( isCarried )
+		{
+			var playAreaPos = nearPlayArea.transform.position;
+			this.transform.SetParent( null );
+
+			this.transform.position = new Vector3( playAreaPos.x, playAreaPos.y + 2.0f, playAreaPos.z + 0.0f );
+			isCarried = false;
+		}
+		else
+		{
+			Debug.Log( "Cannot place cat; cat is not being carried" );
+		}
+	}
 }

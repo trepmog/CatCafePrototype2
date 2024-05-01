@@ -49,6 +49,6 @@ public class CustomerSpawner : MonoBehaviour
         NavMeshAgent agent = customer.GetComponent<NavMeshAgent>();
         agent.SetDestination(destination.position);
 
-        Debug.Log("destination and navmesh agent set for despawn");
+        //Debug.Log("destination and navmesh agent set for despawn");
     }
 }

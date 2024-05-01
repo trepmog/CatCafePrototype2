@@ -80,18 +80,26 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void SetPickupCat(bool matchResult, GameObject cat)
     {
+        //pick up the cat and try to leave if it is a match
         if (matchResult)
         {
             cat.transform.SetParent(this.transform);
             cat.transform.localPosition = new Vector3(0, 0, -0.5f);
+
+            hasCat = true;
+            DespawnSelf();
         }
 
-        DespawnSelf();
     }
 
     private void DespawnSelf()
     {
         spawner.MoveToExit(this);
-        Debug.Log("Customer.cs has tried to DespawnSelf");
+        //Debug.Log("Customer.cs has tried to DespawnSelf");
+    }
+
+    public bool GetHasCat()
+    {
+        return hasCat;
     }
 }

@@ -167,6 +167,8 @@ public class CatInteract : MonoBehaviour, IInteractable
 
 			this.transform.position = new Vector3( playAreaPos.x, playAreaPos.y + 2.0f, playAreaPos.z + 0.0f );
 			isCarried = false;
+
+			ConvoView.CatDiscoveryStart();
 		}
 		else
 		{

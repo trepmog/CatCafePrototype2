@@ -7,6 +7,8 @@ using TMPro;
 
 public class ConvoView : MonoBehaviour
 {
+	private static ConvoView s_instance;
+
 	public Customer customer;
 	private GameObject convoBG;
 	private GameObject matchSuccess;
@@ -24,6 +26,12 @@ public class ConvoView : MonoBehaviour
 	private bool isFirstInteract = true;
 	private const float delayBeforeHide = 2.0f;
 	private float timer;
+	public CatTraitDiscoveryPrototype catTraitDiscovery;
+
+	private void Awake()
+	{
+		s_instance = this;
+	}
 
 	void Start()
 	{
@@ -159,5 +167,10 @@ public class ConvoView : MonoBehaviour
 				DisplayCustomerDemands();
 			}
 		}
+	}
+
+	public static void CatDiscoveryStart()
+	{
+		s_instance.catTraitDiscovery.gameObject.SetActive( true );
 	}
 }

@@ -79,6 +79,8 @@ public class MatchMaker : MonoBehaviour
         cat.GetComponent<CatInteract>().SetSuccessfulMatch(matchResult);
         //Tells customer to pickup cat and leave
         customer.GetComponent<Customer>().SetPickupCat(matchResult, cat);
+        //clear current customer checking for a match
+        catTreeInteract.isCustomerNear = false;
 
     }
 

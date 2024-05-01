@@ -27,6 +27,7 @@ public class CustomerDespawner : MonoBehaviour
             if (other.gameObject.GetComponent<Customer>().GetHasCat())
             {
                 Debug.Log("Customer Has Cat!");
+                Destroy(other.gameObject);
             }                
         }        
     }

@@ -113,6 +113,7 @@ public class Customer : MonoBehaviour, IInteractable
 
     private void DespawnSelf()
     {
+        agent.isStopped = false;
         spawner.MoveToExit(this);
         //Debug.Log("Customer.cs has tried to DespawnSelf");
     }

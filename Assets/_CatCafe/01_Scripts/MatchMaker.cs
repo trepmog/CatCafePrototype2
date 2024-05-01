@@ -75,6 +75,11 @@ public class MatchMaker : MonoBehaviour
         if(matchCount > 0) matchResult = true;
         Debug.Log("Matching was " + matchResult);
         OnMatchResult(matchResult);
+        //Sets matched cat to no longer be interactable by player
+        cat.GetComponent<CatInteract>().SetSuccessfulMatch(matchResult);
+        //Tells customer to pickup cat and leave
+        customer.GetComponent<Customer>().SetPickupCat(matchResult, cat);
+
     }
 
 	public static void MakeMatch( GameObject _cat )

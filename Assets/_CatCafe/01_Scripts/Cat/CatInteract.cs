@@ -17,9 +17,9 @@ public class CatInteract : MonoBehaviour, IInteractable
     private bool keyHeld;
     private bool isNearTree = false;
 	private GameObject nearPlayArea = null;
+    private bool successfulMatch = false;
 
-
-	void Start()
+    void Start()
     {
         catIcons = GetComponent<CatIcons>();
         catTreeObj = GameObject.FindWithTag("CatTree");
@@ -68,15 +68,20 @@ public class CatInteract : MonoBehaviour, IInteractable
     public void Interact(GameObject interactor)
     {
         player = interactor;
-        if (isCarried)
+
+        //Stop the player from interacting with a cat that's already been matched to a customer
+        if (!successfulMatch)
         {
-            // Put down the cat
-            PutDown(player);
-        }
-        else
-        {
-            // Pick up the cat
-            PickUp(player);
+            if (isCarried)
+            {
+                // Put down the cat
+                PutDown(player);
+            }
+            else
+            {
+                // Pick up the cat
+                PickUp(player);
+            }
         }
     }
 
@@ -175,4 +180,8 @@ public class CatInteract : MonoBehaviour, IInteractable
 			Debug.Log( "Cannot place cat; cat is not being carried" );
 		}
 	}
+    public void SetSuccessfulMatch(bool isMatch)
+    {
+        successfulMatch = isMatch;
+    }
 }

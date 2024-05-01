@@ -13,6 +13,7 @@ public class Customer : MonoBehaviour, IInteractable
     private CustomerIcons customerIcons;
     private bool keyHeld = false;
     public event Action<string> OnInteract;
+    private CustomerSpawner spawner;
 
 
     void Awake()
@@ -22,6 +23,9 @@ public class Customer : MonoBehaviour, IInteractable
         GameObject traitGenieObj = GameObject.FindWithTag("TraitGenie");
         traitGenie = traitGenieObj.GetComponent<TraitGenie>();
         traitGenie.OnHold += FindKeyHolding;
+        GameObject spawnerObj = GameObject.FindWithTag("Persistent");
+        spawner = spawnerObj.GetComponent<CustomerSpawner>();
+
     }
 
     void Update()
@@ -72,5 +76,22 @@ public class Customer : MonoBehaviour, IInteractable
     public void ToggleShowTraits(bool toggle)
     {
         customerIcons.ToggleShowIcons(toggle);
+    }
+
+    public void SetPickupCat(bool matchResult, GameObject cat)
+    {
+        if (matchResult)
+        {
+            cat.transform.SetParent(this.transform);
+            cat.transform.localPosition = new Vector3(0, 0, -0.5f);
+        }
+
+        DespawnSelf();
+    }
+
+    private void DespawnSelf()
+    {
+        spawner.MoveToExit(this);
+        Debug.Log("Customer.cs has tried to DespawnSelf");
     }
 }

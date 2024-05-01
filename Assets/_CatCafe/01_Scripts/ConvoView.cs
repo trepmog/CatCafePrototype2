@@ -79,6 +79,7 @@ public class ConvoView : MonoBehaviour
 	public void ShowConvoUI( string givenId, CustomerProfile _customerProfile )
 	{
 		customerProfile = _customerProfile;
+		customer = _customerProfile.GetComponent<Customer>();
 		customerId = givenId;
 		// Shows convo BG
 		SetActiveConvo( true );
@@ -150,7 +151,10 @@ public class ConvoView : MonoBehaviour
 					
 					string desiredTrait = customerEntry.conversations[currentConversationIndex].desiredTrait;
 					if ( !String.IsNullOrEmpty( desiredTrait ) )
+					{
 						customerProfile.Desire_Discover( desiredTrait );
+						customer.IconShowForSeconds();
+					}
 
 					currentConversationIndex = Math.Min( currentConversationIndex + 1, customerEntry.conversations.Length-1 );
 					SetActiveConvo( false ); // End conversation if we run out of texts

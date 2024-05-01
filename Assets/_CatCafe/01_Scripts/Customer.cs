@@ -15,6 +15,8 @@ public class Customer : MonoBehaviour, IInteractable
     public event Action<string, CustomerProfile> OnInteract;
     private CustomerSpawner spawner;
 	private CustomerProfile customerProfile;
+	private const float AUTO_ICON_DURATION = 2.0f;
+	private float m_autoIconShowUntil = 0;
 
 
     void Awake()
@@ -31,6 +33,12 @@ public class Customer : MonoBehaviour, IInteractable
 
     void Update()
     {
+		if ( keyHeld && m_autoIconShowUntil != 0 && Time.time > m_autoIconShowUntil )
+		{
+			m_autoIconShowUntil = 0;
+			keyHeld = false;
+		}
+
         // Shows traits if true, hides if false
         ToggleShowTraits(keyHeld);
     }
@@ -72,7 +80,17 @@ public class Customer : MonoBehaviour, IInteractable
     {
         // Sets local boolean to event given boolean
         keyHeld = isHeld;
-    }
+		m_autoIconShowUntil = 0;
+	}
+
+	public void IconShowForSeconds()
+	{
+		if ( !keyHeld )
+		{
+			keyHeld = true;
+			m_autoIconShowUntil = Time.time + AUTO_ICON_DURATION;
+		}
+	}
 
     public void ToggleShowTraits(bool toggle)
     {

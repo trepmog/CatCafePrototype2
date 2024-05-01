@@ -33,6 +33,7 @@ public class CustomerSpawner : MonoBehaviour
         // Create a customer and give them the destination of the chair
         GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
         NavMeshAgent agent = customerObject.GetComponent<NavMeshAgent>();
+		agent.updateRotation = false;
         agent.SetDestination(destination.position);
 
         // Subscribe to ConvoView to allow conversation UI to open when player interacts with it

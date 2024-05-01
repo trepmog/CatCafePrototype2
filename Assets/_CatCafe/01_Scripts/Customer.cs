@@ -12,8 +12,9 @@ public class Customer : MonoBehaviour, IInteractable
     public TraitGenie traitGenie; 
     private CustomerIcons customerIcons;
     private bool keyHeld = false;
-    public event Action<string> OnInteract;
+    public event Action<string, CustomerProfile> OnInteract;
     private CustomerSpawner spawner;
+	private CustomerProfile customerProfile;
 
 
     void Awake()
@@ -25,7 +26,7 @@ public class Customer : MonoBehaviour, IInteractable
         traitGenie.OnHold += FindKeyHolding;
         GameObject spawnerObj = GameObject.FindWithTag("Persistent");
         spawner = spawnerObj.GetComponent<CustomerSpawner>();
-
+		customerProfile = GetComponent<CustomerProfile>();
     }
 
     void Update()
@@ -40,7 +41,7 @@ public class Customer : MonoBehaviour, IInteractable
         agent.isStopped = true;
         // Trigger showing convo event
         // First customer is hard coded, this will change when we cycle through customers and load data
-        OnInteract("Customer1");
+        OnInteract( "Customer1", customerProfile );
     }
 
     public void Resume()

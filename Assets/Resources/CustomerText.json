@@ -5,93 +5,139 @@
         "name": "Marcus",
         "occupation": "Writer",
         "desiredTraits": ["Calm", "Curious"],
-        "conversationTexts": [
-          {
-            "speaker": "Lucy",
-            "text": "Hello, welcome to Meow Cafe! Is this your first visit with us?"
-          },
-          {
-            "speaker": "Marcus",
-            "text": "Yes, it's my first time here. I've heard a lot about your place."
-          },
-          {
-            "speaker": "Lucy",
-            "text": "I’m glad to hear that! What brings you in today?"
-          },
-          {
-            "speaker": "Marcus",
-            "text": "I'm considering adoption. I spend most of my time writing, and I thought a feline companion might make a nice muse."
-          },
-          {
-            "speaker": "Lucy",
-            "text": "We do have a cat who might just fit you. His name is Phantom. He is quite calm, curious and loves being with company."
-          },
-          {
-            "speaker": "Marcus",
-            "text": "Phantom, huh? That name alone already seems like a good fit. Where can I see him?"
-          },
-          {
-            "speaker": "Lucy",
-            "text": "He usually hangs out by the window. He loves looking outside while lounging on his cushion."
-          },
-          {
-            "speaker": "Marcus",
-            "text": "That sounds great. Thank you for the recommendation."
-          },
-          {
-            "speaker": "Lucy",
-            "text": "You're welcome!"
-          }
-        ]
+		"conversations": [
+			{
+				"conversationTexts": [
+				  {
+					"speaker": "Lucy",
+					"text": "Hello, welcome to Meow Cafe! Is this your first visit with us?"
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "Yes, it's my first time here. I've heard a lot about your place."
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "I’m glad to hear that!"
+				  }
+				]
+			},
+			{
+				"desiredTrait": "Calm",
+				"conversationTexts": [
+				  {
+					"speaker": "Lucy",
+					"text": "What brings you in today?"
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "I'm considering adoption. I spend most of my time writing, and I thought a feline companion might make a nice muse."
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "We do have a cat who might just fit you. His name is Phantom. He is quite calm and loves being with company."
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "Phantom, huh? That name alone already seems like a good fit. Where can I see him?"
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "He usually hangs out by the window. He loves looking outside while lounging on his cushion."
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "That sounds great. Thank you for the recommendation."
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "You're welcome!"
+				  }
+				]
+			},
+			{
+				"desiredTrait": "Curious",
+				"conversationTexts": [
+				  {
+					"speaker": "Lucy",
+					"text": "Any more thoughts about the cats?"
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "When you say quite calm, do you mean lounging around all the time?"
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "Oh, no, Phantom also is pretty curious and likes to explore."
+				  },
+				  {
+					"speaker": "Marcus",
+					"text": "That sounds perfect."
+				  }
+				]
+			},
+			{
+				"conversationTexts": [
+				  {
+					"speaker": "Marcus",
+					"text": "I'd adopt today if I find the right cat."
+				  }
+				]
+			}
+		]
       },
       {
         "id": "Customer2",
         "name": "Julia",
         "occupation": "Yoga Instructor",
         "desiredTraits": ["Adventurous", "Playful"],
-        "conversationTexts": [
-          {
-            "speaker": "Julia",
-            "text": "Hi Lucy, I'm Julia from the yoga studio down the street. I've been thinking about adding a friendly feline to our space."
-          },
-          {
-            "speaker": "Lucy",
-            "text": "Hello Julia! That sounds like a fantastic idea. What kind of cat are you looking for?"
-          },
-          {
-            "speaker": "Julia",
-            "text": "Well, I need a cat that's playful and adventurous. Someone who is not afraid of being around people."
-          },
-          {
-            "speaker": "Lucy",
-            "text": "I have just the right cat for you. Let me introduce you to Lotus. She’s very sociable and loves attention."
-          },
-          {
-            "speaker": "Julia",
-            "text": "Lotus sounds like she could be a wonderful addition. Can I meet her?"
-          }
-        ]
+		"conversations": [
+			{
+				"conversationTexts": [
+				  {
+					"speaker": "Julia",
+					"text": "Hi Lucy, I'm Julia from the yoga studio down the street. I've been thinking about adding a friendly feline to our space."
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "Hello Julia! That sounds like a fantastic idea. What kind of cat are you looking for?"
+				  },
+				  {
+					"speaker": "Julia",
+					"text": "Well, I need a cat that's playful and adventurous. Someone who is not afraid of being around people."
+				  },
+				  {
+					"speaker": "Lucy",
+					"text": "I have just the right cat for you. Let me introduce you to Lotus. She’s very sociable and loves attention."
+				  },
+				  {
+					"speaker": "Julia",
+					"text": "Lotus sounds like she could be a wonderful addition. Can I meet her?"
+				  }
+				]
+			}
+		]
       },
       {
         "id": "Customer3",
         "name": "Theo",
         "occupation": "Music Producer",
         "desiredTraits": ["Adventurous", "Playful"],
-        "conversationTexts": []
+        "conversations": []
       },
       {
         "id": "Customer4",
         "name": "Angela",
         "occupation": "Librarian",
         "desiredTraits": ["Adventurous", "Playful"],
-        "conversationTexts": []
+        "conversations": []
       },
       {
         "id": "Customer5",
         "name": "Darren",
         "occupation": "Chef",
         "desiredTraits": ["Adventurous", "Playful"],
-        "conversationTexts": []
+        "conversations": []
       }
 
     ]

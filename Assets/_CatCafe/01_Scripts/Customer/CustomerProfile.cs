@@ -8,10 +8,12 @@ public class CustomerProfile : MonoBehaviour
     public string customerName;
     public string occupation;
     public string[] desiredTraits;
-    public ConversationText[] conversationTexts;
+    public Conversation[] conversations;
     public GameManager gameManager;
     private DataLoader dataManager;
     public event Action OnLoaded;
+
+	private BitArray m_traitsDiscovered;
 
     void Start()
     {
@@ -36,8 +38,10 @@ public class CustomerProfile : MonoBehaviour
             {
                 customerName = customer.name;
                 occupation = customer.occupation;
-                conversationTexts = customer.conversationTexts;
+                conversations = customer.conversations;
                 desiredTraits = customer.desiredTraits;
+
+				m_traitsDiscovered = new BitArray( desiredTraits.Length, false );
 
                 limit++;
                 break;
@@ -50,4 +54,28 @@ public class CustomerProfile : MonoBehaviour
     {
         return desiredTraits;
     }
+
+	public bool IsDesireDiscovered( int index )
+	{
+		return m_traitsDiscovered[index];
+	}
+
+	public void Desire_Discover( int index )
+	{
+		m_traitsDiscovered.Set( index, true );
+	}
+
+	public void Desire_Discover( string trait )
+	{
+		for ( int i=0; i<desiredTraits.Length; i++ )
+		{
+			if ( desiredTraits[i] == trait )
+			{
+				Desire_Discover( i );
+				return;
+			}
+		}
+
+		Debug.LogError( $"The customer does not have the desire \'{trait}\'" );
+	}
 }

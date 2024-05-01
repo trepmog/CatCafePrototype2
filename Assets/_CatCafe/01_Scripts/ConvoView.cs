@@ -10,6 +10,7 @@ public class ConvoView : MonoBehaviour
 	private static ConvoView s_instance;
 
 	public Customer customer;
+	private CustomerProfile customerProfile;
 	private GameObject convoBG;
 	private GameObject matchSuccess;
 	private GameObject matchFail;
@@ -20,6 +21,7 @@ public class ConvoView : MonoBehaviour
 	public TextMeshProUGUI nameText;
 	private CustomerDatabase customerDB;
 	public MatchMaker matchMaker;
+	private int currentConversationIndex = 0;
 	private int currentTextIndex = 0;
 	private string customerId;
 	private bool isConvoActive = false;
@@ -74,8 +76,9 @@ public class ConvoView : MonoBehaviour
 		customer.OnInteract -= ShowConvoUI;
 	}
 
-	public void ShowConvoUI( string givenId )
+	public void ShowConvoUI( string givenId, CustomerProfile _customerProfile )
 	{
+		customerProfile = _customerProfile;
 		customerId = givenId;
 		// Shows convo BG
 		SetActiveConvo( true );
@@ -135,15 +138,21 @@ public class ConvoView : MonoBehaviour
 		{
 			if ( customerEntry.id == customerId )
 			{
-				if ( currentTextIndex < customerEntry.conversationTexts.Length )
+				if ( currentTextIndex < customerEntry.conversations[currentConversationIndex].conversationTexts.Length )
 				{
 					// Cycle to the next piece of dialogue
-					var convoEntry = customerEntry.conversationTexts[currentTextIndex];
+					var convoEntry = customerEntry.conversations[currentConversationIndex].conversationTexts[currentTextIndex];
 					nameText.text = convoEntry.speaker + ":";
 					conversationText.text = convoEntry.text;
 				}
 				else
 				{
+					
+					string desiredTrait = customerEntry.conversations[currentConversationIndex].desiredTrait;
+					if ( !String.IsNullOrEmpty( desiredTrait ) )
+						customerProfile.Desire_Discover( desiredTrait );
+
+					currentConversationIndex = Math.Min( currentConversationIndex + 1, customerEntry.conversations.Length-1 );
 					SetActiveConvo( false ); // End conversation if we run out of texts
 				}
 			}

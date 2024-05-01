@@ -9,10 +9,11 @@ public class CustomerIcons : MonoBehaviour
     private string[] traitText;
     private GameObject trait1;
     private GameObject trait2;
+	private GameObject traitNone;
     private Camera mainCam;
     private Canvas canvasObj;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameObject camCam = GameObject.FindWithTag("MainCamera");
         mainCam = camCam.GetComponent<Camera>();
@@ -49,9 +50,11 @@ public class CustomerIcons : MonoBehaviour
         // Assigns the individual icons to variables for later use
         trait1 = traitCanvas.transform.Find(traitText[0]).gameObject;  
         trait2 = traitCanvas.transform.Find(traitText[1]).gameObject;
+		traitNone = traitCanvas.transform.Find( "None" ).gameObject;
         // Separate them so they don't appear on top of each other
         trait1.transform.localPosition = new Vector3(-50f, 0, 0); // L
         trait2.transform.localPosition = new Vector3(50f, 0, 0); // R
+		traitNone.transform.localPosition = Vector3.zero;
 
         // Ensures those icons are disabled at start
         if (traitCanvas != null) 
@@ -64,7 +67,12 @@ public class CustomerIcons : MonoBehaviour
     // Shows or hides the icons
     public void ToggleShowIcons(bool toggle)
     {
-        trait1.SetActive(toggle);
-        trait2.SetActive(toggle);
-    }
+		bool discoveredTrait1 = customerProfile.IsDesireDiscovered( 0 );
+		bool discoveredTrait2 = customerProfile.IsDesireDiscovered( 1 );
+		bool discoveredAny = discoveredTrait1 || discoveredTrait2;
+
+		trait1.SetActive( toggle && discoveredTrait1 );
+		trait2.SetActive( toggle && discoveredTrait2 );
+		traitNone.SetActive( toggle && !discoveredAny );
+	}
 }

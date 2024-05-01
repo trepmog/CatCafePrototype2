@@ -7,7 +7,14 @@ public class CustomerEntry
     public string name;
     public string occupation;
     public string[] desiredTraits;
-    public ConversationText[] conversationTexts;
+	public Conversation[] conversations;
+}
+
+[System.Serializable]
+public class Conversation
+{
+	public string desiredTrait;
+	public ConversationText[] conversationTexts;
 }
 
 [System.Serializable]

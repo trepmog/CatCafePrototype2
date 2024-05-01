@@ -15,6 +15,9 @@ public class CatProfile : MonoBehaviour
     public GameManager gameManager;
     public event Action OnLoaded;
 
+	private BitArray m_traitsDiscovered;
+
+
     void Start()
     {
         dataManager = GameManager.Instance.GetComponent<DataLoader>();
@@ -43,6 +46,8 @@ public class CatProfile : MonoBehaviour
                 breed = cat.breed;
                 traits = cat.character;
 
+				m_traitsDiscovered = new BitArray( traits.Length, false );
+
                 limit--;
                 break;
             }
@@ -57,4 +62,13 @@ public class CatProfile : MonoBehaviour
         return traits;
     }
 
+	public bool IsTraitDiscovered( int index )
+	{
+		return m_traitsDiscovered[index];
+	}
+
+	public void Trait_Discover( int index )
+	{
+		m_traitsDiscovered.Set( index, true );
+	}
 }

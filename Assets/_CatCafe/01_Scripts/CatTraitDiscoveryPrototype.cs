@@ -15,6 +15,7 @@ public class CatTraitDiscoveryPrototype : MonoBehaviour
 	}
 	private State m_state;
 	private float m_stateStartTime;
+	[HideInInspector] public CatProfile m_catProfile;
 
 	void OnEnable()
 	{
@@ -55,7 +56,23 @@ public class CatTraitDiscoveryPrototype : MonoBehaviour
 
 		if ( success )
 		{
-			m_text.text = "You learn the cat is ______";
+			List<int> undiscoveredTraits = new List<int>();
+			for ( int traitIndex=0; traitIndex < m_catProfile.traits.Length; traitIndex++ )
+			{
+				if ( !m_catProfile.IsTraitDiscovered( traitIndex ) )
+					undiscoveredTraits.Add( traitIndex );
+			}
+
+			if ( undiscoveredTraits.Count == 0 )
+			{
+				m_text.text = "This cat has no more traits to learn.";
+			}
+			else
+			{
+				int learnedTrait = undiscoveredTraits[UnityEngine.Random.Range( 0, undiscoveredTraits.Count )];
+				m_catProfile.Trait_Discover( learnedTrait );
+				m_text.text = $"You learn this cat is {m_catProfile.traits[learnedTrait]}.";
+			}
 		}
 		else
 		{

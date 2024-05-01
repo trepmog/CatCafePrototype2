@@ -169,8 +169,9 @@ public class ConvoView : MonoBehaviour
 		}
 	}
 
-	public static void CatDiscoveryStart()
+	public static void CatDiscoveryStart( CatProfile catProfile )
 	{
+		s_instance.catTraitDiscovery.m_catProfile = catProfile;
 		s_instance.catTraitDiscovery.gameObject.SetActive( true );
 	}
 }

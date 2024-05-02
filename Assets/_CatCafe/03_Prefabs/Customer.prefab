@@ -169,7 +169,7 @@ MonoBehaviour:
   occupation: 
   desiredTraits: []
   conversations: []
-  spriteNormal: {fileID: 2100000, guid: a86dfd33b4e2e25429a8606bd012d00a, type: 2}
+  spriteNormal: {fileID: 2800000, guid: 4b8d19babbf3dc14587a29d943dd8e84, type: 3}
   spriteHappy: {fileID: 0}
   spriteSad: {fileID: 0}
 --- !u!1 &2178313708710406990

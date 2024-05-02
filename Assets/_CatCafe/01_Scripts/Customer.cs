@@ -40,7 +40,22 @@ public class Customer : MonoBehaviour, IInteractable
 
 	private void Initialize()
 	{
-		m_spriteRenderer.material = customerProfile.spriteNormal;
+		SetSpriteNormal();
+	}
+
+	public void SetSpriteNormal()
+	{
+		m_spriteRenderer.material.mainTexture = customerProfile.spriteNormal;
+	}
+
+	public void SetSpriteHappy()
+	{
+		m_spriteRenderer.material.mainTexture = customerProfile.spriteHappy;
+	}
+
+	public void SetSpriteSad()
+	{
+		m_spriteRenderer.material.mainTexture = customerProfile.spriteSad;
 	}
 
 	void Update()

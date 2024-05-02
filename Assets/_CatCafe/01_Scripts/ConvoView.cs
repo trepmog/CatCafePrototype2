@@ -84,13 +84,16 @@ public class ConvoView : MonoBehaviour
 		DisplayCustomerDemands();
 	}
 
-	public void ShowMatchResult( bool result )
+	public void ShowMatchResult( bool result, Customer _customer )
 	{
+		customer = _customer;
+
 		//Debug.Log("Match Success is: " + matchSuccess.activeSelf);
 		if ( result )
 		{
 			matchSuccess.SetActive( true );
 			thankYou.SetActive( true );
+			customer.SetSpriteHappy();
 			//continueText.SetActive( true );
 			// This is to prevent the Update from hiding the results right away
 			timer = delayBeforeHide;
@@ -99,6 +102,7 @@ public class ConvoView : MonoBehaviour
 		{
 			Debug.Log( "It thinks it's a fail" );
 			matchFail.SetActive( true );
+			customer.SetSpriteSad();
 			//continueText.SetActive( true );
 			// This is to prevent the Update from hiding the results right away
 			timer = delayBeforeHide;
@@ -111,6 +115,7 @@ public class ConvoView : MonoBehaviour
 		thankYou.SetActive( false );
 		matchFail.SetActive( false );
 		continueText.SetActive( false );
+		customer.SetSpriteNormal();
 	}
 
 	private void SetActiveConvo( bool isActive )

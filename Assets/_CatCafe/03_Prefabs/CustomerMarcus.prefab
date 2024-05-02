@@ -10,8 +10,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 931184387521886117, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
       propertyPath: m_Name
-      value: Customer
+      value: CustomerMarcus
       objectReference: {fileID: 0}
+    - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
+      propertyPath: spriteSad
+      value: 
+      objectReference: {fileID: 2800000, guid: 47bd1c4567746be4286ca7c211567e3e, type: 3}
+    - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
+      propertyPath: spriteHappy
+      value: 
+      objectReference: {fileID: 2800000, guid: 97cbe3dfa4b2e9144995b5b2ae2210aa, type: 3}
+    - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
+      propertyPath: spriteNormal
+      value: 
+      objectReference: {fileID: 2800000, guid: cbe9e0dc536f79a4f857707ee5db100e, type: 3}
     - target: {fileID: 6974981441298934886, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

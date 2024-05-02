@@ -13,13 +13,21 @@ PrefabInstance:
       value: CustomerJulia
       objectReference: {fileID: 0}
     - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
+      propertyPath: spriteSad
+      value: 
+      objectReference: {fileID: 2800000, guid: 120775bec01b172419ac974674faa934, type: 3}
+    - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
       propertyPath: customerId
       value: Customer2
       objectReference: {fileID: 0}
     - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
+      propertyPath: spriteHappy
+      value: 
+      objectReference: {fileID: 2800000, guid: bb2fcf07d05b9754995f45471afc128b, type: 3}
+    - target: {fileID: 5473148036073205961, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
       propertyPath: spriteNormal
       value: 
-      objectReference: {fileID: 2100000, guid: aed17a96a4c8c4d4ab5d15353a08973d, type: 2}
+      objectReference: {fileID: 2800000, guid: 5dae631a2cb0bc645a2aeeba36fe9d80, type: 3}
     - target: {fileID: 6974981441298934886, guid: eb5cfa75a171a4b4aa7abf0553590ecc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

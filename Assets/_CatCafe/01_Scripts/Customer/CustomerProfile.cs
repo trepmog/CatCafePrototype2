@@ -14,9 +14,9 @@ public class CustomerProfile : MonoBehaviour
     public Conversation[] conversations;
 
 	[Header( "Sprites" )]
-	public Material spriteNormal;
-	public Material spriteHappy;
-	public Material spriteSad;
+	public Texture spriteNormal;
+	public Texture spriteHappy;
+	public Texture spriteSad;
 
     //public GameManager gameManager;
     private DataLoader dataManager;

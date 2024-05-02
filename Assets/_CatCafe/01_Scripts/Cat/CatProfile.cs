@@ -11,8 +11,15 @@ public class CatProfile : MonoBehaviour
     public string fur;
     public string breed;
     public string[] traits;
-    public DataLoader dataManager;
-    public GameManager gameManager;
+
+	[Header( "Sprites" )]
+	public Texture spriteNormal;
+	public Texture spriteHappy;
+	public Texture spriteSad;
+
+	private DataLoader dataManager;
+	private MeshRenderer m_spriteRenderer;
+    //public GameManager gameManager;
     public event Action OnLoaded;
 
 	private BitArray m_traitsDiscovered;
@@ -21,9 +28,10 @@ public class CatProfile : MonoBehaviour
     void Start()
     {
         dataManager = GameManager.Instance.GetComponent<DataLoader>();
-        LoadCatData();
+		m_spriteRenderer = GetComponent<MeshRenderer>();
+		LoadCatData();
+		SetSpriteNormal();
     }
-
 
     private void LoadCatData()
     {
@@ -70,5 +78,20 @@ public class CatProfile : MonoBehaviour
 	public void Trait_Discover( int index )
 	{
 		m_traitsDiscovered.Set( index, true );
+	}
+
+	public void SetSpriteNormal()
+	{
+		m_spriteRenderer.material.mainTexture = spriteNormal;
+	}
+
+	public void SetSpriteHappy()
+	{
+		m_spriteRenderer.material.mainTexture = spriteHappy;
+	}
+
+	public void SetSpriteSad()
+	{
+		m_spriteRenderer.material.mainTexture = spriteSad;
 	}
 }

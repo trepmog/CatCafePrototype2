@@ -522,8 +522,9 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  dataManager: {fileID: 0}
-  gameManager: {fileID: 0}
+  spriteNormal: {fileID: 2800000, guid: 8b5f1805e9936c3409a84393b611db65, type: 3}
+  spriteHappy: {fileID: 2800000, guid: 55734970caadf7141a73c21c55846cf7, type: 3}
+  spriteSad: {fileID: 2800000, guid: a13119c797bd9474cb1c49d1814905b4, type: 3}
 --- !u!114 &307358004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,8 +1079,9 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  dataManager: {fileID: 0}
-  gameManager: {fileID: 0}
+  spriteNormal: {fileID: 2800000, guid: adf74749b89586d48a69741e9bbfdd7d, type: 3}
+  spriteHappy: {fileID: 2800000, guid: 0355419d30a4c564f8443bb69e5ea99e, type: 3}
+  spriteSad: {fileID: 2800000, guid: 623a7fe3e1e404a4083aea5f5202d97a, type: 3}
 --- !u!114 &1103868339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,8 +1210,9 @@ MonoBehaviour:
   fur: 
   breed: 
   traits: []
-  dataManager: {fileID: 0}
-  gameManager: {fileID: 0}
+  spriteNormal: {fileID: 2800000, guid: cb5060c5476cb3142ab8a2f0eda8d9b7, type: 3}
+  spriteHappy: {fileID: 2800000, guid: 5dc402b5ea072f84fb6efabd65840e84, type: 3}
+  spriteSad: {fileID: 2800000, guid: 4a9c6f37596264f42b0a065eca93a1e0, type: 3}
 --- !u!114 &1150547501
 MonoBehaviour:
   m_ObjectHideFlags: 0

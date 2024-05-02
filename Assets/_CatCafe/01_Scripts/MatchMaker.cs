@@ -14,7 +14,7 @@ public class MatchMaker : MonoBehaviour
     private CatTreeInteract catTreeInteract;
     private string[] customerTraits;
     private string[] catTraits;
-    public event Action<bool, Customer> OnMatchResult;
+    public event Action<bool, Customer, CatProfile> OnMatchResult;
 
 	private void Awake()
 	{
@@ -75,7 +75,7 @@ public class MatchMaker : MonoBehaviour
         if(matchCount > 0) matchResult = true;
         Debug.Log("Matching was " + matchResult);
 		Customer customerComponent = customer.GetComponent<Customer>();
-		OnMatchResult( matchResult, customerComponent );
+		OnMatchResult( matchResult, customerComponent, catProfile );
         //Sets matched cat to no longer be interactable by player
         cat.GetComponent<CatInteract>().SetSuccessfulMatch(matchResult);
 		//Tells customer to pickup cat and leave

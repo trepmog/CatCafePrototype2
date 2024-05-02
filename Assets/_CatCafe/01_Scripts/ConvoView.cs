@@ -11,6 +11,7 @@ public class ConvoView : MonoBehaviour
 
 	public Customer customer;
 	private CustomerProfile customerProfile;
+	private CatProfile catProfile;
 	private GameObject convoBG;
 	private GameObject matchSuccess;
 	private GameObject matchFail;
@@ -84,9 +85,10 @@ public class ConvoView : MonoBehaviour
 		DisplayCustomerDemands();
 	}
 
-	public void ShowMatchResult( bool result, Customer _customer )
+	public void ShowMatchResult( bool result, Customer _customer, CatProfile _cat )
 	{
 		customer = _customer;
+		catProfile = _cat;
 
 		//Debug.Log("Match Success is: " + matchSuccess.activeSelf);
 		if ( result )
@@ -94,6 +96,7 @@ public class ConvoView : MonoBehaviour
 			matchSuccess.SetActive( true );
 			thankYou.SetActive( true );
 			customer.SetSpriteHappy();
+			catProfile.SetSpriteHappy();
 			//continueText.SetActive( true );
 			// This is to prevent the Update from hiding the results right away
 			timer = delayBeforeHide;
@@ -103,6 +106,7 @@ public class ConvoView : MonoBehaviour
 			Debug.Log( "It thinks it's a fail" );
 			matchFail.SetActive( true );
 			customer.SetSpriteSad();
+			catProfile.SetSpriteSad();
 			//continueText.SetActive( true );
 			// This is to prevent the Update from hiding the results right away
 			timer = delayBeforeHide;
@@ -116,6 +120,7 @@ public class ConvoView : MonoBehaviour
 		matchFail.SetActive( false );
 		continueText.SetActive( false );
 		customer.SetSpriteNormal();
+		catProfile.SetSpriteNormal();
 	}
 
 	private void SetActiveConvo( bool isActive )

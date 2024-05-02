@@ -23,7 +23,6 @@ public class ConvoView : MonoBehaviour
 	public MatchMaker matchMaker;
 	private int currentConversationIndex = 0;
 	private int currentTextIndex = 0;
-	private string customerId;
 	private bool isConvoActive = false;
 	private bool isFirstInteract = true;
 	private const float delayBeforeHide = 2.0f;
@@ -80,7 +79,6 @@ public class ConvoView : MonoBehaviour
 	{
 		customerProfile = _customerProfile;
 		customer = _customerProfile.GetComponent<Customer>();
-		customerId = givenId;
 		// Shows convo BG
 		SetActiveConvo( true );
 		DisplayCustomerDemands();
@@ -135,31 +133,25 @@ public class ConvoView : MonoBehaviour
 
 	public void DisplayCustomerDemands()
 	{
-		foreach ( CustomerEntry customerEntry in customerDB.customers )
+		if ( currentTextIndex < customerProfile.conversations[currentConversationIndex].conversationTexts.Length )
 		{
-			if ( customerEntry.id == customerId )
-			{
-				if ( currentTextIndex < customerEntry.conversations[currentConversationIndex].conversationTexts.Length )
-				{
-					// Cycle to the next piece of dialogue
-					var convoEntry = customerEntry.conversations[currentConversationIndex].conversationTexts[currentTextIndex];
-					nameText.text = convoEntry.speaker + ":";
-					conversationText.text = convoEntry.text;
-				}
-				else
-				{
+			// Cycle to the next piece of dialogue
+			var convoEntry = customerProfile.conversations[currentConversationIndex].conversationTexts[currentTextIndex];
+			nameText.text = convoEntry.speaker + ":";
+			conversationText.text = convoEntry.text;
+		}
+		else
+		{
 					
-					string desiredTrait = customerEntry.conversations[currentConversationIndex].desiredTrait;
-					if ( !String.IsNullOrEmpty( desiredTrait ) )
-					{
-						customerProfile.Desire_Discover( desiredTrait );
-						customer.IconShowForSeconds();
-					}
-
-					currentConversationIndex = Math.Min( currentConversationIndex + 1, customerEntry.conversations.Length-1 );
-					SetActiveConvo( false ); // End conversation if we run out of texts
-				}
+			string desiredTrait = customerProfile.conversations[currentConversationIndex].desiredTrait;
+			if ( !String.IsNullOrEmpty( desiredTrait ) )
+			{
+				customerProfile.Desire_Discover( desiredTrait );
+				customer.IconShowForSeconds();
 			}
+
+			currentConversationIndex = Math.Min( currentConversationIndex + 1, customerProfile.conversations.Length-1 );
+			SetActiveConvo( false ); // End conversation if we run out of texts
 		}
 	}
 

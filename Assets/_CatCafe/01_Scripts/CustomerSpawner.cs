@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,11 +11,15 @@ public class CustomerSpawner : MonoBehaviour
     private Transform spawnPoint;
     private Transform destination;
     private GameObject entrance;
+	private DataLoader dataManager;
 
-    void Start()
+	private static int nextCharacterSpawnIndex = 0;
+
+	void Start()
     {
-        // Get the location of the Front Door
-        entrance = GameObject.FindWithTag("FrontDoor");
+		dataManager = GameManager.Instance.GetComponent<DataLoader>();
+		// Get the location of the Front Door
+		entrance = GameObject.FindWithTag("FrontDoor");
         // Set the spawn point to be Front Door location
         spawnPoint = entrance.transform;
         // Spawn a customer one time
@@ -30,8 +35,17 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        // Create a customer and give them the destination of the chair
-        GameObject customerObject = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+		CustomerEntry customerEntry = dataManager.customerDatabase.customers[nextCharacterSpawnIndex];
+		string prefabName = $"Assets/_CatCafe/03_Prefabs/Customer{customerEntry.name}.prefab";
+		GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabName);
+		if ( prefab == null )
+		{
+			prefab = customerPrefab; // default
+			Debug.LogError( "Missing prefab " + prefabName );
+		}
+
+		// Create a customer and give them the destination of the chair
+		GameObject customerObject = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         NavMeshAgent agent = customerObject.GetComponent<NavMeshAgent>();
 		agent.updateRotation = false;
         agent.SetDestination(destination.position);

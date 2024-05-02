@@ -17,6 +17,7 @@ public class Customer : MonoBehaviour, IInteractable
 	private CustomerProfile customerProfile;
 	private const float AUTO_ICON_DURATION = 2.0f;
 	private float m_autoIconShowUntil = 0;
+	public MeshRenderer m_spriteRenderer;
 
 
     void Awake()
@@ -29,9 +30,20 @@ public class Customer : MonoBehaviour, IInteractable
         GameObject spawnerObj = GameObject.FindWithTag("Persistent");
         spawner = spawnerObj.GetComponent<CustomerSpawner>();
 		customerProfile = GetComponent<CustomerProfile>();
+		customerProfile.OnLoaded += Initialize;
     }
 
-    void Update()
+	private void OnDestroy()
+	{
+		customerProfile.OnLoaded -= Initialize;
+	}
+
+	private void Initialize()
+	{
+		m_spriteRenderer.material = customerProfile.spriteNormal;
+	}
+
+	void Update()
     {
 		if ( keyHeld && m_autoIconShowUntil != 0 && Time.time > m_autoIconShowUntil )
 		{
@@ -49,7 +61,7 @@ public class Customer : MonoBehaviour, IInteractable
         agent.isStopped = true;
         // Trigger showing convo event
         // First customer is hard coded, this will change when we cycle through customers and load data
-        OnInteract( "Customer1", customerProfile );
+        OnInteract( customerProfile.customerId, customerProfile );
     }
 
     public void Resume()

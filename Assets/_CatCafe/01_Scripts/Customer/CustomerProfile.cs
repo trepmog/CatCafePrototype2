@@ -5,11 +5,20 @@ using System;
 
 public class CustomerProfile : MonoBehaviour
 {
+	public string customerId;
+
+	[Header( "Fields Loaded at runtime" )]
     public string customerName;
     public string occupation;
     public string[] desiredTraits;
     public Conversation[] conversations;
-    public GameManager gameManager;
+
+	[Header( "Sprites" )]
+	public Material spriteNormal;
+	public Material spriteHappy;
+	public Material spriteSad;
+
+    //public GameManager gameManager;
     private DataLoader dataManager;
     public event Action OnLoaded;
 
@@ -34,7 +43,7 @@ public class CustomerProfile : MonoBehaviour
 
         foreach (CustomerEntry customer in customers)
         {
-            if (customer.id == "Customer" + limit.ToString() && limit < 2) 
+            if (customer.id == customerId && limit < 2) 
             {
                 customerName = customer.name;
                 occupation = customer.occupation;

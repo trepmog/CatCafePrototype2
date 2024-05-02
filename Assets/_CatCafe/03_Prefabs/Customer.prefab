@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traitGenie: {fileID: 0}
+  m_spriteRenderer: {fileID: 9217380100418823001}
 --- !u!114 &3578646915034494836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f6ab3869043413bbefa4459e913278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  customerId: Customer1
+  customerName: 
   occupation: 
   desiredTraits: []
-  conversationTexts: []
-  gameManager: {fileID: 0}
+  conversations: []
+  spriteNormal: {fileID: 2100000, guid: a86dfd33b4e2e25429a8606bd012d00a, type: 2}
+  spriteHappy: {fileID: 0}
+  spriteSad: {fileID: 0}
 --- !u!1 &2178313708710406990
 GameObject:
   m_ObjectHideFlags: 0
